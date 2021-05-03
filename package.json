@@ -6,6 +6,10 @@
   "author": "Lucas Gomes <lucasdeoliveira887@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/lusqa/compasso#readme",
+  "scripts": {
+    "dev": "nodemon index",
+    "start": "node index"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
