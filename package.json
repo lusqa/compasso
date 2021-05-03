@@ -34,6 +34,14 @@
     "nodemon": "^2.0.7",
     "sinon": "^10.0.0"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lusqa/compasso.git"
