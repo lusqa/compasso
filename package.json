@@ -18,6 +18,8 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
@@ -36,7 +38,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
