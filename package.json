@@ -2,9 +2,10 @@
   "name": "compasso",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:lusqa/compasso.git",
+  "description": "An application to test node and mongodb",
   "author": "Lucas Gomes <lucasdeoliveira887@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/lusqa/compasso#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
@@ -28,5 +29,9 @@
     "mocha": "^8.3.2",
     "nodemon": "^2.0.7",
     "sinon": "^10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lusqa/compasso.git"
   }
 }
