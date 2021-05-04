@@ -15,11 +15,11 @@ module.exports = async (req, res, next) => {
 
     if (city) {
       LOGGER.debug('City already added with name: %s and state: %s', city.name, city.state)
-      res.status(400).send('You cannot add a city with same name and state!')
+      res.status(400).send({ message: 'You cannot add a city with same name and state!' })
     }
   } catch (err) {
     LOGGER.error('Error finding the city on database: %s', err)
-    res.status(500).send(err)
+    res.status(500).send({ message: err.message })
   }
 
   next()
