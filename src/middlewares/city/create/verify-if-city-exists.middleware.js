@@ -21,4 +21,6 @@ module.exports = async (req, res, next) => {
     LOGGER.error('Error finding the city on database: %s', err)
     res.status(500).send(err)
   }
+
+  next()
 }
