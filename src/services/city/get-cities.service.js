@@ -1,8 +1,6 @@
-const City = require('../../models/City')
-
 const LOGGER = require('../../logger')([__filename].join())
 
-module.exports = async ({ name, state, limit = 10, page = 1 }) => {
+module.exports = async (City, { name, state, limit = 10, page = 1 }) => {
   const query = {}
 
   if (name) {

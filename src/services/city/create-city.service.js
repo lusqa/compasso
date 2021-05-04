@@ -1,8 +1,6 @@
-const City = require('../../models/City')
-
 const LOGGER = require('../../logger')([__filename].join())
 
-module.exports = async ({ name, state }) => {
+module.exports = async (City, { name, state }) => {
   try {
     LOGGER.debug('Creating a city on database with name: %s and state: %s', name, state)
     const city = await City.create({
