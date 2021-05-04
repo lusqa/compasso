@@ -11,7 +11,8 @@
     "start": "node index",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test:unit": "cross-env NODE_ENV=test mocha --config ./test/unit/config/.mocharc.yml --file ./test/functional/config/setup.js test/unit/specs/"
+    "test:unit": "cross-env NODE_ENV=test mocha --config ./test/unit/config/.mocharc.yml --file ./test/functional/config/setup.js test/unit/specs/",
+    "test:func": "cross-env NODE_ENV=test mocha --config ./test/functional/config/.mocharc.yml --file ./test/functional/config/setup.js test/functional/specs/"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
