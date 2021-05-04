@@ -6,7 +6,7 @@ module.exports = () => {
   const router = Router()
 
   router.route('/').post(middlewares.create, controller.create)
-  router.route('/').get(middlewares.get, controller.get)
+  router.route('/').get(controller.get)
 
   return router
 }

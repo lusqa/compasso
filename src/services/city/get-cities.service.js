@@ -2,7 +2,7 @@ const City = require('../../models/City')
 
 const LOGGER = require('../../logger')([__filename].join())
 
-module.exports = async ({ name, state }) => {
+module.exports = async ({ name, state, limit = 10, page = 1 }) => {
   const query = {}
 
   if (name) {
@@ -15,7 +15,11 @@ module.exports = async ({ name, state }) => {
 
   try {
     LOGGER.debug('Finding cities on database with query: %o', query)
+    const skip = (page - 1) * limit
     const cities = await City.find(query)
+      .skip(skip)
+      .limit(limit)
+      .sort({ name: 1 })
 
     if (!cities.length) {
       LOGGER.debug('No one city found with query: %o', query)
