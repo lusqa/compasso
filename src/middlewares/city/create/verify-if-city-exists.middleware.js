@@ -1,4 +1,4 @@
-const City = require('../../../models/City')
+const City = require('../../../models/city')
 
 const LOGGER = require('../../../logger')([__filename].join())
 
