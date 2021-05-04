@@ -10,7 +10,7 @@
     "variables": {
       "protocol": {
         "enum": ["http", "https"],
-        "default": "http",
+        "default": "https",
         "description": "http protocol, use http only locally"
       },
       "host": {
