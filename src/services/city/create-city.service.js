@@ -1,5 +1,6 @@
-const LOGGER = require('../../logger')([__filename].join())
 const City = require('../../models/City')
+
+const LOGGER = require('../../logger')([__filename].join())
 
 module.exports = async ({ name, state }) => {
   try {
