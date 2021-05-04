@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "description": "An application to test node and mongodb",
-  "author": "Lucas Gomes <lucasdeoliveira887@gmail.com>",
+  "author": "Lucas Gomes",
   "license": "MIT",
   "homepage": "https://github.com/lusqa/compasso#readme",
   "scripts": {
@@ -43,5 +43,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lusqa/compasso.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lusqa/compasso/issues"
+  },
+  "engines": {
+    "yarn": ">=1.22.10",
+    "node": ">=14.16.1"
   }
 }
