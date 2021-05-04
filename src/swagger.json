@@ -1,0 +1,228 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "1.0.0",
+    "title": "Compasso",
+    "description": "An application to apply node and mongodb concepts"
+  },
+  "servers": [{
+    "url": "{protocol}://localhost:{port}/api/v1",
+    "variables": {
+      "protocol": {
+        "enum": ["http", "https"],
+        "default": "http",
+        "description": "http protocol"
+      },
+      "port": {
+        "default": 3000,
+        "description": "server port"
+      }
+    }
+  }],
+  "externalDocs": {
+  },
+  "tags": [
+    {
+      "name": "city",
+      "description": "Operations about city"
+    }
+  ],
+  "paths": {
+    "/city": {
+      "get": {
+        "tags": [
+          "city"
+        ],
+        "summary": "Get cities from database",
+        "description": "Returns an array of cities according to received parameters",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The city name to search by",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "state",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The city state to search by",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "description": "The page size in pagination",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "The number of the page in pagination",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cities"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/messageResponse"
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "tags": [
+          "city"
+        ],
+        "summary": "Create a city in the database",
+        "description": "Create a city in the database",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The city name",
+                    "example": "Fortaleza"
+                  },
+                  "state": {
+                    "type": "string",
+                    "description": "The state of the city",
+                    "example": "Ceará"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/messageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/messageResponse"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "cities": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/city"
+        }
+      },
+      "city": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "The internal database id",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "name": {
+            "type": "string",
+            "description": "The city name",
+            "example": "Fortaleza"
+          },
+          "state": {
+            "type": "string",
+            "description": "The state of the city",
+            "example": "Ceará"
+          },
+          "created_at": {
+            "type": "timestamp",
+            "description": "The timestamp of creation on database (ISO format)",
+            "example": "2020-09-28T02:33:13.667Z"
+          },
+          "updated_at": {
+            "type": "timestamp",
+            "description": "The timestamp of updating on database (ISO format)",
+            "example": "2020-09-28T02:33:13.667Z"
+          },
+          "_v": {
+            "type": "integer",
+            "description": "The document version",
+            "example": 0
+          }
+        }
+      },
+      "messageResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The response message of succcess",
+            "example": "City created successfully!"
+          }
+        }
+      },
+      "messageResponseError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The response message of error",
+            "example": "Error creating the city: [error stack]"
+          }
+        }
+      }
+    },
+    "responses": {
+      "messageResponseSuccess": {
+        "description": "Success response message",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/messageResponseSuccess"
+            }
+          }
+        }
+      },
+      "messageResponseError": {
+        "description": "Error response message",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/messageResponseError"
+            }
+          }
+        }
+      }
+    }
+  }
+}
