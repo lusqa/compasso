@@ -17,8 +17,8 @@ module.exports = async ({ name, state, limit = 10, page = 1 }) => {
     LOGGER.debug('Finding cities on database with query: %o', query)
     const skip = (page - 1) * limit
     const cities = await City.find(query)
-      .skip(skip)
-      .limit(limit)
+      .skip(parseInt(skip))
+      .limit(parseInt(limit))
       .sort({ name: 1 })
 
     if (!cities.length) {
