@@ -1,10 +1,12 @@
 const databaseLoader = require('./database.loader')
 const expressLoader = require('./express.loader')
 
+const LOGGER = require('../logger')([__filename].join())
+
 module.exports = async ({ app }) => {
   await databaseLoader()
 
   await expressLoader({ app })
 
-  console.debug('Express Loader has initalized successfully!')
+  LOGGER.debug('Express Loader has initalized successfully!')
 }
