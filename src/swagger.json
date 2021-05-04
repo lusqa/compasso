@@ -6,16 +6,16 @@
     "description": "An application to apply node and mongodb concepts"
   },
   "servers": [{
-    "url": "{protocol}://localhost:{port}/api/v1",
+    "url": "{protocol}://{host}/api/v1",
     "variables": {
       "protocol": {
         "enum": ["http", "https"],
         "default": "http",
-        "description": "http protocol"
+        "description": "http protocol, use http only locally"
       },
-      "port": {
-        "default": 3000,
-        "description": "server port"
+      "host": {
+        "default": "test-compasso-uol.herokuapp.com",
+        "description": "host, use localhost:{port} locally"
       }
     }
   }],
@@ -87,7 +87,7 @@
             }
           },
           "default": {
-            "$ref": "#/components/responses/messageResponse"
+            "$ref": "#/components/responses/messageResponseError"
           }
         },
         "security": []
@@ -126,13 +126,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/messageResponse"
+                  "$ref": "#/components/schemas/messageResponseSuccess"
                 }
               }
             }
           },
           "default": {
-            "$ref": "#/components/responses/messageResponse"
+            "$ref": "#/components/responses/messageResponseError"
           }
         }
       }
