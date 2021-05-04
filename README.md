@@ -18,7 +18,7 @@
 
 ### 🏠 [Homepage](https://github.com/lusqa/compasso#readme)
 
-### ✨ [Demo](https://demo-url.com)
+### ✨ [Demo](https://test-compasso-uol.herokuapp.com/api/v1/docs)
 
 ## Prerequisites
 
