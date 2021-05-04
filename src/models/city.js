@@ -3,13 +3,12 @@ const { Schema } = mongoose
 
 const schema = new Schema(
   {
-    nome: {
+    name: {
       type: String,
       required: true,
-      unique: true,
       index: true
     },
-    estado: {
+    state: {
       type: String,
       required: true,
       index: true
@@ -22,5 +21,7 @@ const schema = new Schema(
     }
   }
 )
+
+schema.index({ name: 1, state: 1 }, { unique: true })
 
 module.exports = mongoose.model('City', schema, 'city')
