@@ -87,10 +87,54 @@
             }
           },
           "default": {
-            "$ref": "#/components/responses/InternalServerError"
+            "$ref": "#/components/responses/messageResponse"
           }
         },
         "security": []
+      },
+      "post": {
+        "tags": [
+          "city"
+        ],
+        "summary": "Create a city in the database",
+        "description": "Create a city in the database",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The city name",
+                    "example": "Fortaleza"
+                  },
+                  "state": {
+                    "type": "string",
+                    "description": "The state of the city",
+                    "example": "Ceará"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/messageResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/messageResponse"
+          }
+        }
       }
     }
   },
@@ -136,16 +180,45 @@
             "example": 0
           }
         }
+      },
+      "messageResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The response message of succcess",
+            "example": "City created successfully!"
+          }
+        }
+      },
+      "messageResponseError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The response message of error",
+            "example": "Error creating the city: [error stack]"
+          }
+        }
       }
     },
     "responses": {
-      "InternalServerError": {
-        "description": "Internal server error",
+      "messageResponseSuccess": {
+        "description": "Success response message",
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "description": "The error object"
+              "$ref": "#/components/schemas/messageResponseSuccess"
+            }
+          }
+        }
+      },
+      "messageResponseError": {
+        "description": "Error response message",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/messageResponseError"
             }
           }
         }

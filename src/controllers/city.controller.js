@@ -6,9 +6,9 @@ module.exports = {
     try {
       const { body } = req
       await services.create(City, body)
-      return res.status(201).json('City created successfully!')
+      return res.status(201).json({ message: 'City created successfully!' })
     } catch (error) {
-      return res.status(500).send(`Error creating the city: ${error.message}`)
+      return res.status(500).send({ message: `Error creating the city: ${error.message}` })
     }
   },
   get: async (req, res) => {
@@ -17,12 +17,12 @@ module.exports = {
       const city = await services.get(City, query)
 
       if (!city.length) {
-        return res.status(404).json('No one city found')
+        return res.status(404).json({ message: 'No one city found' })
       }
 
       return res.status(200).json(city)
     } catch (error) {
-      return res.status(500).send(`Error finding the city: ${error.message}`)
+      return res.status(500).send({ message: `Error finding the city: ${error.message}` })
     }
   }
 }
