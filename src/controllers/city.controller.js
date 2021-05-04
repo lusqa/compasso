@@ -1,13 +1,27 @@
-const { create } = require('../services/city')
+const services = require('../services/city')
 
 module.exports = {
   create: async (req, res) => {
     try {
       const { body } = req
-      await create(body)
+      await services.create(body)
       return res.status(201).json('City created successfully!')
     } catch (error) {
       return res.status(500).send(`Error creating the city: ${error.message}`)
+    }
+  },
+  getByName: async (req, res) => {
+    try {
+      const { params } = req
+      const city = await services.getByName(params)
+
+      if (!city.length) {
+        return res.status(404).json('No one city found')
+      }
+
+      return res.status(200).json(city)
+    } catch (error) {
+      return res.status(500).send(`Error finding the city: ${error.message}`)
     }
   }
 }
