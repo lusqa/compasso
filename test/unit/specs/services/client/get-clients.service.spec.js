@@ -51,7 +51,7 @@ describe('get-cities.service', () => {
 
   describe('When the service ran with an error', () => {
     it('Should rethrows the error', () => {
-      const error = new Error('Error creating city')
+      const error = new Error('Error getting client')
       const Client = {
         find: () => ({
           skip: () => ({

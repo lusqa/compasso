@@ -1,5 +1,8 @@
 module.exports = {
-  'rules': {
+  env: {
+    mocha: true
+  },
+  rules: {
     'no-unused-expressions': 'off'
   }
 }
