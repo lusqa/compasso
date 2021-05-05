@@ -10,6 +10,7 @@ const schema = new Schema(
     },
     sex: {
       type: String,
+      enum: ['M', 'F'],
       required: true
     },
     birthDate: {
