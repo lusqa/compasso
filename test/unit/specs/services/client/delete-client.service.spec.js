@@ -8,12 +8,10 @@ const deleteClient = require('~src/services/client/delete-client.service')
 chai.use(chaiAsPromised)
 const { expect } = chai
 
-const sandbox = sinon.createSandbox()
-
 describe('get-cities.service', () => {
   describe('When the service ran succesfully', () => {
     it('Should pass the id value to remove method correctly', async () => {
-      const remove = sandbox.fake()
+      const remove = sinon.fake()
       const Client = { remove }
 
       const id = 'id-to-delete'
