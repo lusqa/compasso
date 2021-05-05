@@ -20,4 +20,4 @@ deploy:
     secure: $SECURE_HEROKU_KEY
   app: $APP
   on:
-    repo: olucasgomes/compasso
+    repo: lusqa/compasso
