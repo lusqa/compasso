@@ -38,6 +38,19 @@ yarn install
 yarn start
 ```
 
+## Run unit tests
+
+```sh
+yarn test:unit
+```
+
+## Run functional tests
+
+```sh
+yarn test:func
+```
+
+
 ## Author
 
 👤 **Lucas Gomes**
