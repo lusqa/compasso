@@ -13,6 +13,8 @@
     "lint:fix": "eslint . --fix",
     "test:unit": "cross-env NODE_ENV=test mocha --config ./test/unit/config/.mocharc.yml --file ./test/unit/config/setup.js test/unit/specs/",
     "test:func": "cross-env NODE_ENV=test mocha --config ./test/functional/config/.mocharc.yml --file ./test/functional/config/setup.js test/functional/specs/",
+    "travis:unit": "cross-env mocha --config ./test/unit/config/.mocharc.yml --file ./test/unit/config/setup.js test/unit/specs/",
+    "travis:func": "cross-env mocha --config ./test/functional/config/.mocharc.yml --file ./test/functional/config/setup.js test/functional/specs/",
     "postinstall": "link-module-alias"
   },
   "dependencies": {
