@@ -22,7 +22,7 @@
 
 ## Prerequisites
 
-- yarn >=1.22.10
+- yarn >=1.22.4
 - node >=14.16.1
 
 ## Install
