@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+- node
+addons:
+  apt:
+    packages:
+    - libgconf-2-4
+    - libcurl3
+cache:
+  yarn: true
+install:
+- yarn install --ignore-engines
+before_script:
+- yarn start --silent &
+script:
+- yarn lint
+deploy:
+  provider: heroku
+  api_key:
+    secure: $SECURE_HEROKU_KEY
+  app: $APP
+  on:
+    repo: olucasgomes/compasso
