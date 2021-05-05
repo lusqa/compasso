@@ -8,18 +8,10 @@ const createCityService = require('~src/services/city/create-city.service')
 const { expect } = chai
 
 describe('create-city.service', () => {
-  it('When create method returns successfully, the create-city function should returns sucessfully too', async () => {
-    const id = 'id'
-    const date = new Date().toISOString()
+  it('Should returns succesfully, if create method returns succesfully', async () => {
     const City = {
       create: ({ name, state }) => {
-        return {
-          _id: id,
-          name,
-          state,
-          createdAt: date,
-          updatedAt: date
-        }
+        return new Promise((resolve, reject) => (resolve({ name, state })))
       }
     }
 
@@ -28,14 +20,11 @@ describe('create-city.service', () => {
 
     const result = await createCityService(City, { name, state })
 
-    expect(result._id).to.be.equal(id)
     expect(result.name).to.be.equal(name)
     expect(result.state).to.be.equal(state)
-    expect(result.createdAt).to.be.equal(date)
-    expect(result.updatedAt).to.be.equal(date)
   })
 
-  it('When create method returns an error, the create-city function should returns throw an error too', () => {
+  it('Should throws an error, if create method returns an error', () => {
     const error = new Error('Error creating city')
     const City = {
       create: () => {
