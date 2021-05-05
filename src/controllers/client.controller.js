@@ -11,5 +11,19 @@ module.exports = {
     } catch (error) {
       return res.status(500).send({ message: `Error creating the client: ${error.message}` })
     }
+  },
+  get: async (req, res) => {
+    try {
+      const { query } = req
+      const client = await services.get(Client, query)
+
+      if (!client.length) {
+        return res.status(404).json({ message: 'No one client found' })
+      }
+
+      return res.status(200).json(client)
+    } catch (error) {
+      return res.status(500).send({ message: `Error finding the client: ${error.message}` })
+    }
   }
 }
