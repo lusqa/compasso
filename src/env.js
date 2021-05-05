@@ -2,6 +2,10 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
+if (process.env.NODE_ENV === 'test') {
+  process.env.DATABASE_URL = process.env.DATABASE_URL_TEST
+}
+
 module.exports = {
   NODE_ENV: process.env.NODE_ENV || 'development',
   HOST: process.env.HOST || 'localhost',
