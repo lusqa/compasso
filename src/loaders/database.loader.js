@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const LOGGER = require('../logger')([__filename].join())
-const { DATABASE_URL } = require('../env')
+const { NODE_ENV, DATABASE_URL } = require('../env')
 
 const databaseLoader = async () => {
   const options = {
@@ -12,8 +12,10 @@ const databaseLoader = async () => {
   }
 
   try {
-    await mongoose.connect(DATABASE_URL, options)
-    LOGGER.info('Connection to database engine has successfully established')
+    if (NODE_ENV !== 'test') {
+      await mongoose.connect(DATABASE_URL, options)
+      LOGGER.info('Connection to database engine has successfully established')
+    }
   } catch (err) {
     LOGGER.error('Something went wrong connecting to the database!')
     throw err
