@@ -13,7 +13,7 @@ retries: 1
 slow: 75
 sort: false
 spec: 'test/functional/specs/**/*.spec.js'
-timeout: 120000
+timeout: 300000
 trace-warnings: true
 trace-deprecation: true
 watch: false
