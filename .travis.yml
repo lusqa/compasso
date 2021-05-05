@@ -17,8 +17,8 @@ before_script:
   - mongo test --eval 'db.createUser({ user:"travis", pwd:"test", roles:["readWrite"] });'
 script:
 - yarn lint
-- yarn test:unit
-- yarn test:func
+- yarn travis:unit
+- yarn travis:func
 deploy:
   provider: heroku
   api_key:
