@@ -5,7 +5,8 @@ const { Mockgoose } = require('mockgoose')
 const {
   HOST,
   PORT,
-  PROTOCOL
+  PROTOCOL,
+  NODE_ENV
 } = require('~src/env')
 
 const LOGGER = require('~src/logger')([__filename].join())
@@ -30,8 +31,9 @@ const connectDatabase = async () => {
 before(async function () {
   global.baseURL = `${PROTOCOL}://${HOST}:${PORT}/api/v1`
 
-  await connectDatabase()
-
+  if (NODE_ENV === 'test') {
+    await connectDatabase()
+  }
   const createServer = require('../../../server')
   await createServer()
 })
