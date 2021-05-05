@@ -22,5 +22,5 @@ module.exports = async (req, res, next) => {
     return res.status(500).send({ message: err.message })
   }
 
-  next()
+  return next()
 }
