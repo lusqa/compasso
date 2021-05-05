@@ -5,12 +5,12 @@ const {
   HOST,
   PORT,
   PROTOCOL
-} = require('../../../src/env')
+} = require('~src/env')
 
-beforeEach(function (done) {
-  this.baseURL = `${PROTOCOL}://${HOST}:${PORT}`
-  require('../../../index')
-  done()
+before(async function () {
+  global.baseURL = `${PROTOCOL}://${HOST}:${PORT}/api/v1`
+  const createServer = require('../../../server')
+  await createServer()
 })
 
 afterEach(function (done) {
