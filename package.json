@@ -10,7 +10,10 @@
     "dev": "nodemon index",
     "start": "node index",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test:unit": "cross-env NODE_ENV=test mocha --config ./test/unit/config/.mocharc.yml --file ./test/unit/config/setup.js test/unit/specs/",
+    "test:func": "cross-env NODE_ENV=test mocha --config ./test/functional/config/.mocharc.yml --file ./test/functional/config/setup.js test/functional/specs/",
+    "postinstall": "link-module-alias"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -24,6 +27,7 @@
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
     "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
@@ -35,13 +39,18 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.2.1",
     "husky": "^6.0.0",
+    "link-module-alias": "^1.2.0",
     "lint-staged": "^10.5.4",
     "mocha": "^8.3.2",
+    "mockgoose": "^8.0.4",
     "nodemon": "^2.0.7",
     "sinon": "^10.0.0"
   },
   "lint-staged": {
     "*.js": "eslint --fix"
+  },
+  "_moduleAliases": {
+    "~src": "src"
   },
   "repository": {
     "type": "git",

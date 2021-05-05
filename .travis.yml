@@ -12,6 +12,8 @@ install:
 - yarn install --ignore-engines
 script:
 - yarn lint
+- yarn test:unit
+- yarn test:func
 deploy:
   provider: heroku
   api_key:
