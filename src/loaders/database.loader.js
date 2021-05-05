@@ -12,8 +12,6 @@ const databaseLoader = async () => {
   }
 
   try {
-    /* Only to debug travis */
-    LOGGER.info('DATABASE_URL: %s', DATABASE_URL)
     await mongoose.connect(DATABASE_URL, options)
     LOGGER.info('Connection to database engine has successfully established')
   } catch (err) {
