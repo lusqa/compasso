@@ -10,8 +10,6 @@ cache:
   yarn: true
 install:
 - yarn install --ignore-engines
-before_script:
-- yarn start --silent &
 script:
 - yarn lint
 deploy:
