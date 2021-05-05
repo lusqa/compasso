@@ -1,5 +1,5 @@
 <h1 align="center">Welcome to compasso 👋</h1>
-<p>
+<p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/yarn-%3E%3D1.22.4-blue.svg" />
   <img src="https://img.shields.io/badge/node-%3E%3D14.16.1-blue.svg" />

@@ -15,7 +15,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: $SECURE_HEROKU_KEY
+    secure: $SECURE_HEROKU_API_KEY
   app: $APP
   on:
     branch: main
