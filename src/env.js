@@ -1,8 +1,11 @@
+const LOGGER = require('./logger')([__filename].join())
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
 if (process.env.NODE_ENV === 'test') {
+  LOGGER.info('ENV: %s', process.env)
   process.env.DATABASE_URL = process.env.DATABASE_URL_TEST
 }
 
