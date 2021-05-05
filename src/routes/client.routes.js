@@ -8,6 +8,7 @@ module.exports = () => {
   router.route('/').post(middlewares.create, controller.create)
   router.route('/').get(controller.get)
   router.route('/:id').delete(middlewares.delete, controller.delete)
+  router.route('/:id/name').patch(middlewares.updateClientName, controller.updateClientName)
 
   return router
 }

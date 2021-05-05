@@ -34,5 +34,14 @@ module.exports = {
     } catch (error) {
       return res.status(500).send({ message: `Error deleting the client: ${error.message}` })
     }
+  },
+  updateClientName: async (req, res) => {
+    try {
+      const { params, body } = req
+      await services.updateClientName(Client, params.id, body.name)
+      return res.sendStatus(204)
+    } catch (error) {
+      return res.status(500).send({ message: `Error deleting the client: ${error.message}` })
+    }
   }
 }
