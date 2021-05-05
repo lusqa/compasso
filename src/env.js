@@ -1,18 +1,5 @@
-const { exec } = require('child_process')
-
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
-}
-
-if (process.env.NODE_ENV === 'test') {
-  console.log({
-    DATABASE_URL: process.env.DATABASE_URL,
-    DATABASE_URL_TEST: process.env.DATABASE_URL_TEST
-  })
-  exec('echo $DATABASE_URL_TEST', {}, function (error, stdout, stderr) {
-    console.log({ stdout, stderr, error })
-  })
-  process.env.DATABASE_URL = process.env.DATABASE_URL_TEST
 }
 
 module.exports = {
