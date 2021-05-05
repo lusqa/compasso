@@ -11,11 +11,11 @@ module.exports = async (req, res, next) => {
 
     if (!client) {
       LOGGER.debug('No one client found with id: %s', id)
-      res.status(400).send({ message: `No one client found with id: ${id}` })
+      return res.status(400).send({ message: `No one client found with id: ${id}` })
     }
   } catch (err) {
     LOGGER.error('Error finding the client on database: %s', err)
-    res.status(500).send({ message: err.message })
+    return res.status(500).send({ message: err.message })
   }
 
   next()
