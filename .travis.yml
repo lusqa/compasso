@@ -1,6 +1,8 @@
 language: node_js
 node_js:
-- node
+  - node
+services:
+  - mongodb
 addons:
   apt:
     packages:
@@ -10,6 +12,9 @@ cache:
   yarn: true
 install:
 - yarn install --ignore-engines
+before_script:
+  - sleep 15
+  - mongo test --eval 'db.createUser({ user:"travis", pwd:"test", roles:["readWrite"] });'
 script:
 - yarn lint
 - yarn test:unit
