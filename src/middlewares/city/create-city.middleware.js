@@ -1,7 +1,7 @@
 const { body } = require('express-validator')
 
-const verifyIfCityExists = require('./verify-if-city-exists.middleware')
-const validationResult = require('../../validation-result.middleware')
+const verifyIfCityExists = require('./verify-if-city-not-exists.middleware')
+const validationResult = require('../validation-result.middleware')
 
 module.exports = [
   body('name', 'Name is a mandatory field!').isString().exists({ checkNull: true }),

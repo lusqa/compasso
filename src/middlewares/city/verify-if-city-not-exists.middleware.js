@@ -1,6 +1,6 @@
-const City = require('../../../models/city')
+const City = require('../../models/city')
 
-const LOGGER = require('../../../logger')([__filename].join())
+const LOGGER = require('../../logger')([__filename].join())
 
 module.exports = async (req, res, next) => {
   const { name, state } = req.body

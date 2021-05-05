@@ -1,4 +1,5 @@
 const { Router } = require('express')
+
 const controller = require('../controllers/city.controller')
 const { city: middlewares } = require('../middlewares')
 
