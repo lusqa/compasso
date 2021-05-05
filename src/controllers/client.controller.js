@@ -25,5 +25,14 @@ module.exports = {
     } catch (error) {
       return res.status(500).send({ message: `Error finding the client: ${error.message}` })
     }
+  },
+  delete: async (req, res) => {
+    try {
+      const { params } = req
+      await services.deleteClient(Client, params)
+      return res.sendStatus(204)
+    } catch (error) {
+      return res.status(500).send({ message: `Error deleting the client: ${error.message}` })
+    }
   }
 }

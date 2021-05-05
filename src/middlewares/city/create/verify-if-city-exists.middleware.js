@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
     })
 
     if (city) {
-      LOGGER.debug('City already added with name: %s and state: %s', city.name, city.state)
+      LOGGER.debug('City was already added with name: %s and state: %s', city.name, city.state)
       res.status(400).send({ message: 'You cannot add a city with same name and state!' })
     }
   } catch (err) {

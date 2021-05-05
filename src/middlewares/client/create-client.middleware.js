@@ -1,6 +1,6 @@
 const { body } = require('express-validator')
 
-const validationResult = require('../../validation-result.middleware')
+const validationResult = require('../validation-result.middleware')
 
 module.exports = [
   body('name')
