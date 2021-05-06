@@ -85,23 +85,6 @@ describe('create-client.service', () => {
       const city = 'Fortaleza'
       expect(createClientService(Client, City, { city })).to.be.rejected
     })
-
-    it('And the client city was not found, should throws an error', () => {
-      const City = {
-        findOne: ({ name }) => {
-          return new Promise((resolve, reject) => (resolve()))
-        }
-      }
-
-      const Client = {
-        create: ({ city }) => {
-          return new Promise((resolve, reject) => (resolve({ city })))
-        }
-      }
-
-      const city = 'Fortaleza'
-      expect(createClientService(Client, City, { city })).to.be.rejected
-    })
   })
 
   describe('When the service ran with an error', () => {
