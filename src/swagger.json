@@ -25,6 +25,10 @@
     {
       "name": "city",
       "description": "Operations about city"
+    },
+    {
+      "name": "client",
+      "description": "Operations about client"
     }
   ],
   "paths": {
@@ -122,14 +126,198 @@
         },
         "responses": {
           "201": {
+            "$ref": "#/components/responses/messageResponseSuccess"
+          },
+          "default": {
+            "$ref": "#/components/responses/messageResponseError"
+          }
+        }
+      }
+    },
+    "/client": {
+      "get": {
+        "tags": [
+          "client"
+        ],
+        "summary": "Get clients from database",
+        "description": "Returns an array of clients according to received parameters",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The client name to search by",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The client id to search by",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "description": "The page size in pagination",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "The number of the page in pagination",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
             "description": "Successful operation",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/messageResponseSuccess"
+                  "$ref": "#/components/schemas/clients"
                 }
               }
             }
+          },
+          "default": {
+            "$ref": "#/components/responses/messageResponseError"
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "tags": [
+          "client"
+        ],
+        "summary": "Create a client in the database",
+        "description": "Create a client in the database",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The client name",
+                    "example": "José Maria Silva Santos"
+                  },
+                  "sex": {
+                    "type": "string",
+                    "description": "The client name",
+                    "enum": ["M", "F"]
+                  },
+                  "age": {
+                    "type": "string",
+                    "description": "The client age",
+                    "example": 65
+                  },
+                  "birthDate": {
+                    "type": "timestamp",
+                    "description": "The birth date on format YYYY-MM-DD",
+                    "example": "2020-09-30"
+                  },
+                  "city": {
+                    "type": "string",
+                    "description": "The client city name of a registered city",
+                    "example": "Fortaleza"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/messageResponseSuccess"
+          },
+          "default": {
+            "$ref": "#/components/responses/messageResponseError"
+          }
+        }
+      }
+    },
+    "/client/{id}": {
+      "delete": {
+        "tags": [
+          "client"
+        ],
+        "summary": "Delete a client from database",
+        "description": "Searchs a client and delete it",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The client id to search by and delete",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "$ref": "#/components/responses/messageResponseError"
+          }
+        },
+        "security": []
+      }
+    },
+    "/client/{id}/name": {
+      "patch": {
+        "tags": [
+          "client"
+        ],
+        "summary": "Update a client in the database",
+        "description": "Search a client by id and update it name in the database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The client id to search by and update",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The client name to update",
+                    "example": "José Maria Silva Santos"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Successful operation"
           },
           "default": {
             "$ref": "#/components/responses/messageResponseError"
@@ -163,6 +351,62 @@
             "type": "string",
             "description": "The state of the city",
             "example": "Ceará"
+          },
+          "created_at": {
+            "type": "timestamp",
+            "description": "The timestamp of creation on database (ISO format)",
+            "example": "2020-09-28T02:33:13.667Z"
+          },
+          "updated_at": {
+            "type": "timestamp",
+            "description": "The timestamp of updating on database (ISO format)",
+            "example": "2020-09-28T02:33:13.667Z"
+          },
+          "_v": {
+            "type": "integer",
+            "description": "The document version",
+            "example": 0
+          }
+        }
+      },
+      "clients": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/client"
+        }
+      },
+      "client": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "The internal database id",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "name": {
+            "type": "string",
+            "description": "The client name",
+            "example": "José Maria Silva Santos"
+          },
+          "sex": {
+            "type": "string",
+            "description": "The client name",
+            "enum": ["M", "F"]
+          },
+          "age": {
+            "type": "string",
+            "description": "The client age",
+            "example": 65
+          },
+          "birthDate": {
+            "type": "timestamp",
+            "description": "The birth date on format YYYY-MM-DD",
+            "example": "2020-09-30"
+          },
+          "city": {
+            "type": "object",
+            "description": "The client city registered on database",
+            "$ref": "#/components/schemas/city"
           },
           "created_at": {
             "type": "timestamp",
