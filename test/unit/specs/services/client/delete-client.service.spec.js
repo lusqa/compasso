@@ -10,15 +10,15 @@ const { expect } = chai
 
 describe('get-cities.service', () => {
   describe('When the service ran succesfully', () => {
-    it('Should pass the id value to remove method correctly', async () => {
-      const remove = sinon.fake()
-      const Client = { remove }
+    it('Should pass the id value to deleteOne method correctly', async () => {
+      const deleteOne = sinon.fake()
+      const Client = { deleteOne }
 
       const id = 'id-to-delete'
       await deleteClient(Client, { id })
 
-      expect(remove.firstArg).to.have.property('_id')
-      expect(remove.firstArg).to.be.deep.equal({ _id: id })
+      expect(deleteOne.firstArg).to.have.property('_id')
+      expect(deleteOne.firstArg).to.be.deep.equal({ _id: id })
     })
   })
 
@@ -26,7 +26,7 @@ describe('get-cities.service', () => {
     it('Should rethrows the error', () => {
       const error = new Error('Error deleting client')
       const Client = {
-        remove: () => {
+        deleteOne: () => {
           throw error
         }
       }
