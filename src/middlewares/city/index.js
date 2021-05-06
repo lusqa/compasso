@@ -1,4 +1,4 @@
-const create = require('./create/')
+const create = require('./create-city.middleware')
 
 module.exports = {
   create

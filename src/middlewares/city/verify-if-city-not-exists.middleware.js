@@ -1,6 +1,6 @@
-const City = require('../../../models/city')
+const City = require('../../models/city')
 
-const LOGGER = require('../../../logger')([__filename].join())
+const LOGGER = require('../../logger')([__filename].join())
 
 module.exports = async (req, res, next) => {
   const { name, state } = req.body
@@ -14,13 +14,13 @@ module.exports = async (req, res, next) => {
     })
 
     if (city) {
-      LOGGER.debug('City already added with name: %s and state: %s', city.name, city.state)
-      res.status(400).send({ message: 'You cannot add a city with same name and state!' })
+      LOGGER.debug('City was already added with name: %s and state: %s', city.name, city.state)
+      return res.status(400).send({ message: 'You cannot add a city with same name and state!' })
     }
   } catch (err) {
     LOGGER.error('Error finding the city on database: %s', err)
-    res.status(500).send({ message: err.message })
+    return res.status(500).send({ message: err.message })
   }
 
-  next()
+  return next()
 }

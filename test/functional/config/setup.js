@@ -1,4 +1,3 @@
-/* eslint-env node, mocha */
 const mongoose = require('mongoose')
 const { Mockgoose } = require('mockgoose')
 
