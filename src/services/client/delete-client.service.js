@@ -4,7 +4,7 @@ module.exports = async (Client, { id }) => {
   try {
     LOGGER.debug('Deleting a client on database with id: %s', id)
 
-    const deletedClient = await Client.remove({ _id: id })
+    const deletedClient = await Client.deleteOne({ _id: id })
     LOGGER.debug('Client deleted successfully with id: %s!', id)
     return deletedClient
   } catch (err) {
