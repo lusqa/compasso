@@ -53,30 +53,33 @@ describe('city.controller', () => {
       expect(response.status).to.be.equal(201, 'The status code should be 201')
     })
 
-    it('And pass the query parameters correctly, it should return 200', async () => {
-      const name = 'Fortaleza'
-      const state = 'Ceará'
+    describe('And pass the query parameters correctly', () => {
+      it('It should return 200', async () => {
+        const name = 'Fortaleza'
+        const state = 'Ceará'
 
-      const response = await chai
-        .request(global.baseURL)
-        .get('/city')
-        .query({ name, state })
+        const response = await chai
+          .request(global.baseURL)
+          .get('/city')
+          .query({ name, state })
 
-      expect(response.status).to.be.equal(200, 'The status code should be 200')
-    })
+        expect(response.status).to.be.equal(200, 'The status code should be 200')
+      })
 
-    it('And pass the query parameters correctly, it should return 200 and have cu', async () => {
-      const name = 'Fortaleza'
-      const state = 'Ceará'
+      it('It should return the correct data', async () => {
+        const name = 'Fortaleza'
+        const state = 'Ceará'
 
-      const response = await chai
-        .request(global.baseURL)
-        .get('/city')
+        const response = await chai
+          .request(global.baseURL)
+          .get('/city')
+          .query({ name, state })
 
-      expect(response.status).to.be.equal(200, 'The status code should be 200')
+        expect(response.status).to.be.equal(200, 'The status code should be 200')
 
-      expect(response.body[0].name).to.be.equal(name)
-      expect(response.body[0].state).to.be.equal(state)
+        expect(response.body[0].name).to.be.equal(name)
+        expect(response.body[0].state).to.be.equal(state)
+      })
     })
   })
 })

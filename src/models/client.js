@@ -18,7 +18,7 @@ const schema = new Schema(
       required: true
     },
     age: {
-      type: Date,
+      type: Number,
       required: true
     },
     city: {
