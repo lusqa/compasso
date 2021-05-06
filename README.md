@@ -19,7 +19,9 @@
 
 ### 🏠 [Homepage](https://github.com/lusqa/compasso#readme)
 
-### ✨ [Demo](https://test-compasso-uol.herokuapp.com/api/v1/docs)
+### ✨ [Swagger Documentation](https://test-compasso-uol.herokuapp.com/api/v1/docs)
+
+### 📑 [Postman Collection](https://www.getpostman.com/collections/c5052a304ec0ccffc224)
 
 ## Prerequisites
 
@@ -37,6 +39,8 @@ yarn install
 ```sh
 yarn start
 ```
+
+_tip_: you can access the documentationto see the endpoints specifications or download the postman collection
 
 ## Run unit tests
 
